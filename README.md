@@ -13,6 +13,7 @@ Programare Avansată pe Obiecte în Java — materiale și resurse pentru cursul
 |-----------|---------|
 | [laboratory00](src/com/pao/laboratory00/Readme.md) | Primul program, array-uri, Scanner |
 | [laboratory01](src/com/pao/laboratory01/Readme.md) | Clase, încapsulare, Singleton, Comparator |
+| [laboratory02](src/com/pao/laboratory02/Readme.md) | Moștenire, clase abstracte, interfețe, equals/hashCode, colecții |
 
 
 ---
