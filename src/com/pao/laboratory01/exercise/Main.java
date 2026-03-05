@@ -42,11 +42,20 @@ public class Main {
                     break;
                 case 3:
                     // TODO: Implementează adăugare review
+                    //System.out.println("TODO — implementează adăugare review");
+
                     // Pași:
                     // 1. Citește numele mașinii de la tastatură (scanner.next())
+                    System.out.print("Introdu numele mașinii: ");
+                    String carName=scanner.next();
+
                     // 2. Citește textul review-ului (scanner.next())
+                    System.out.print("Introdu textul review-ului: ");
+                    String review=scanner.next();
+
                     // 3. Apelează carService.addReview(carName, review)
-                    System.out.println("TODO — implementează adăugare review");
+                    carService.addReview(carName, review);
+
                     break;
                 case 0:
                     System.out.println("La revedere!");
