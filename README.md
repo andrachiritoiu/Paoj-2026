@@ -14,7 +14,7 @@ Materiale și resurse pentru cursul **Programare Avansată pe Obiecte în Java**
 | [laboratory04](src/com/pao/laboratory04/Readme.md) | Map, enum-uri, excepții custom                                   |
 | [laboratory05](src/com/pao/laboratory05/Readme.md) | Records, Comparable aprofundat, Comparator multiplu              |
 | [laboratory06](src/com/pao/laboratory06/Readme.md) | Interfețe și clase — studiu detaliat (Comparable, Comparator, callback, extindere) |
-| [laboratory07](src/com/pao/laboratory07/Readme.md) | Sealed classes și enum-uri — concepte avansate                    |
+| [laboratory07](src/com/laboratory07/Readme.md) | Sealed classes și enum-uri — concepte avansate                    |
 
 📁 **[Cerințe proiect individual](src/com/pao/project/README.md)** — Etapa I (24 apr) · Etapa II (5 iun)
 
@@ -420,7 +420,7 @@ java NumeleFisierului         # fără extensia .class
 ```bash
 cd src
 javac com/pao/laboratory01/Main.java
-java com.pao.laboratory01.Main
+java com.laboratory01.Main
 ```
 
 > Compilarea folosește `/` (sau `\` pe Windows), rularea folosește `.` (puncte).
