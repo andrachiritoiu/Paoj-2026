@@ -12,12 +12,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public class Main {
     private static final Set<String> HIGH_RISK_COUNTRIES =
             new HashSet<>(Arrays.asList("RU", "NG", "IR", "KP", "SY"));
 
     private static final Map<String, Integer> CHANNEL_SCORE = new HashMap<>();
+    private static final int FLAG_THRESHOLD = 60;
 
     static {
         CHANNEL_SCORE.put("WEB", 15);
@@ -26,6 +28,15 @@ public class Main {
         CHANNEL_SCORE.put("POS", 5);
         CHANNEL_SCORE.put("ATM", 0);
     }
+
+    //A
+    private static final Predicate<Transaction> amountOverThreshold = t -> t.amount >= 1000;
+    private static final Predicate<Transaction> countryInRisk = t -> HIGH_RISK_COUNTRIES.contains(t.country);
+    private static final Predicate<Transaction> channelSuspicious = t -> t.channel.equals("WEB") || t.channel.equals("APP") || t.channel.equals("CRYPTO") ;
+
+    //B
+    private static final Predicate<Transaction> simpleComposedRule = amountOverThreshold.or(countryInRisk).or(channelSuspicious);
+    private static final Predicate<Transaction> flaggedRule = t -> riskScore(t) >= FLAG_THRESHOLD;
 
     private static final Comparator<Transaction> BY_RISK_DESC_THEN_ID_ASC =
             Comparator.comparingInt(Main::riskScore).reversed().thenComparingInt(t -> t.id);
@@ -169,7 +180,7 @@ public class Main {
             score += 5;
         }
 
-        if (HIGH_RISK_COUNTRIES.contains(tx.country)) {
+        if (countryInRisk.test(tx)) {
             score += 25;
         }
 
@@ -177,12 +188,13 @@ public class Main {
         return score;
     }
 
+    //C
     private static boolean isFlagged(Transaction tx) {
-        return riskScore(tx) >= 60;
+        return flaggedRule.test(tx);
     }
 
     private static String verdict(int score) {
-        return score >= 60 ? "FLAG" : "ALLOW";
+        return score >= FLAG_THRESHOLD ? "FLAG" : "ALLOW";
     }
 
     private static String formatRiskLine(Transaction tx) {
