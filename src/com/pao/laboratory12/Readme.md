@@ -1,4 +1,4 @@
-# Laboratory 12 — JDBC: Persistență, Tranzacții și Audit
+    # Laboratory 12 — JDBC: Persistență, Tranzacții și Audit
 
 > Pachet: `com.pao.laboratory12`
 > Tip: laborator complet (2 exerciții obligatorii + 1 bonus)
